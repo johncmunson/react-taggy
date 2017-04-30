@@ -1,2 +1,9 @@
+.git
+.scripts
+.storybook
+images
+node_modules
 src
 .babelrc
+.eslintrc
+.gitignore
