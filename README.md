@@ -68,7 +68,7 @@ All contributors will receive proper attribution, as outlined in the awesome [Al
 
 ## Development Setup
 
-This component was bootstrapped with [React CDK](https://github.com/kadirahq/react-cdk). Refer [React CDK documentation](https://github.com/kadirahq/react-cdk)) to get started with the development.
+This component was bootstrapped with [React CDK](https://github.com/kadirahq/react-cdk). Please refer to [React CDK documentation](https://github.com/kadirahq/react-cdk)) to get started with the development.
 
 ## Inspiration
 
