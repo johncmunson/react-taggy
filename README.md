@@ -79,3 +79,4 @@ This project is originally a fork of [displacy-ent](https://github.com/explosion
 - Change the array API to to accept an array of objects that contain `start` and `end` keys, rather than a single `index` key. This will match the string API and will enable multi-word entities.
 - The component should not fail if the `ents` and `spans` props are not provided. The `text` should just render like a normal `<p>` tag. Heck, even the `text` prop should be optional, and if it's not provided the component will just render like an empty `<p>` tag would.
 - Unit tests, snapshot tests, etc.
+- Add ability to disable auto-aggregation
