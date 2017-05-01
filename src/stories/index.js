@@ -47,3 +47,13 @@ stories.add('Array', () => (
         ]}
     />
 ))
+
+stories.add('No props', () => (
+    <Taggy />
+))
+
+stories.add('Text only, no other props', () => (
+    <Taggy
+        text='Buffalo buffalo Buffalo buffalo buffalo buffalo Buffalo buffalo.'
+    />
+))

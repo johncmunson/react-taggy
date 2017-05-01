@@ -1,7 +1,7 @@
 import React from 'react'
 
 // Define functional component. Destructure the props.
-const Taggy = ({ text, spans, ents }) => {
+const Taggy = ({ text = '', spans = [], ents = []}) => {
 
     // Initialize an empty array that will hold the text and entities
     let jsx = []

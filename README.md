@@ -18,7 +18,7 @@ Visit the [demo page](https://johncmunson.github.io/react-taggy/) and click on '
 #### Node Modules
 `const Taggy = require('react-taggy').default`
 
-#### Required Props
+#### Props
 - `text`: (string || array) The text that will be displayed. May be a string, or an array of tokens.
 - `spans`: (array) The locations within the text that will get tagged. If `text` is a string, then `start` and `end` must be provided and refer to character indices. If `text` is an array of tokens, then `index` must be provided and refers to token index.
 - `ents`: (array) The allowable entity types and the color of each unique tag type.
@@ -80,7 +80,7 @@ This project is originally a fork of [displacy-ent](https://github.com/explosion
 
 ## To-Do
 - Change the array API to to accept an array of objects that contain `start` and `end` keys, rather than a single `index` key. This will match the string API and will enable multi-word entities without relying on the built-in auto-aggregation.
-- The component should not fail if the `ents` and `spans` props are not provided. The `text` should just render like a normal `<p>` tag. Heck, even the `text` prop should be optional, and if it's not provided the component will just render like an empty `<p>` tag would.
+- ~~The component should not fail if the `ents` and `spans` props are not provided. The `text` should just render like a normal `<p>` tag. Heck, even the `text` prop should be optional, and if it's not provided the component will just render like an empty `<p>` tag would.~~
 - Unit tests, snapshot tests, etc.
 - Add ability to disable auto-aggregation
 - Create a sister project where the component is just a single tag.
