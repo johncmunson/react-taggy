@@ -7,30 +7,14 @@ const stories = storiesOf('React Taggy', module)
 
 stories.addDecorator(withKnobs)
 
-stories.add('Text=String. No multi-word entities provided.', () => (
-    <Taggy
-        text={text('Text', 'Michael Jordan ate lunch yesterday in Chicago.')}
-        spans = {[
-            {start: 0, end: 7, type: 'PERSON'},
-            {start: 8, end: 14, type: 'PERSON'},
-            {start: 25, end: 34, type: 'DATE'},
-            {start: 38, end: 45, type: 'LOCATION'}
-        ]}
-        ents = {[
-            {type: 'person', color: {r: 166, g: 226, b: 45}},
-            {type: 'location', color: {r: 67, g: 198, b: 252}},
-            {type: 'date', color: {r: 47, g: 187, b: 171}}
-        ]}
-    />
-))
-
-stories.add('Text=String. Multi-word entities provided.', () => (
+stories.add('Simple sentence', () => (
     <Taggy
         text='Michael Jordan ate lunch yesterday in Chicago.'
         spans = {[
-            {start: 0, end: 14, type: 'PERSON'},
-            {start: 25, end: 34, type: 'DATE'},
-            {start: 38, end: 45, type: 'LOCATION'}
+            {start: 0, end: 7, type: 'person'},
+            {start: 8, end: 14, type: 'person'},
+            {start: 25, end: 34, type: 'date'},
+            {start: 38, end: 45, type: 'location'}
         ]}
         ents = {[
             {type: 'person', color: {r: 166, g: 226, b: 45}},
@@ -40,23 +24,26 @@ stories.add('Text=String. Multi-word entities provided.', () => (
     />
 ))
 
-stories.add('Text=Array. No multi-word entities provided.', () => (
+stories.add('String', () => (
     <Taggy
-        text={['Michael', 'Jordan', 'ate', 'lunch', 'yesterday', 'in', 'Chicago', '.']}
+        text='The quick brown fox jumped over the lazy dog.'
         spans = {[
-            {type: 'person', index: 0},
-            {type: 'person', index: 1},
-            {type: 'date', index: 4},
-            {type: 'location', index: 6}
+            {start: number('start', 16), end: number('end', 19), type: 'example'}
         ]}
         ents = {[
-            {type: 'person', color: {r: 166, g: 226, b: 45}},
-            {type: 'location', color: {r: 67, g: 198, b: 252}},
-            {type: 'date', color: {r: 47, g: 187, b: 171}}
+            {type: 'example', color: {r: 166, g: 226, b: 45}}
         ]}
     />
 ))
 
-stories.add('Text=Array. Multi-word entities provided.', () => (
-    <p>Not supported yet</p>
+stories.add('Array', () => (
+    <Taggy
+        text={['Colorless', 'green', 'ideas', 'sleep', 'furiously', '.']}
+        spans = {[
+            {type: 'example', index: number('index', 2)}
+        ]}
+        ents = {[
+            {type: 'example', color: {r: 67, g: 198, b: 252}}
+        ]}
+    />
 ))

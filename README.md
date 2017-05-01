@@ -3,6 +3,9 @@
 
 #### A simple zero-dependency React component for displaying user-defined entities within a block of text.
 
+## Demo
+Visit the [demo page](https://johncmunson.github.io/react-taggy/) and click on 'knobs' at the bottom to get a feel for how adjusting certain props effects the rendered component.
+
 ## Install
 
 `npm i --save react-taggy` or `yarn add react-taggy`
