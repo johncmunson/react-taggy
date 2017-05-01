@@ -1,7 +1,7 @@
 {
   "name": "react-taggy",
   "version": "0.1.7",
-  "description": "A simple zero-dependency React component that displays entities for a given block of text.",
+  "description": "A simple zero-dependency React component for tagging user-defined entities within a block of text.",
   "repository": {
     "type": "git",
     "url": "https://github.com/johncmunson/react-taggy.git"

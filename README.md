@@ -1,7 +1,7 @@
 ![react-taggy](./images/reacttaggy.jpg "React Taggy")
 ![action shot](./images/actionshot.jpg "Action Shot")
 
-#### A simple zero-dependency React component for displaying user-defined entities within a block of text.
+#### A simple zero-dependency React component for tagging user-defined entities within a block of text.
 
 ## Demo
 Visit the [demo page](https://johncmunson.github.io/react-taggy/) and click on 'knobs' at the bottom to get a feel for how adjusting certain props effects the rendered component.
