@@ -93,15 +93,15 @@ const Taggy = ({ text = '', spans = [], ents = []}) => {
                             borderRadius: '0.25em',
                             border: '1px solid',
                             background: `rgba(
-                                ${() => findRed(t.type)},
-                                ${() => findGreen(t.type)},
-                                ${() => findBlue(t.type)},
+                                ${findRed(t.type)},
+                                ${findGreen(t.type)},
+                                ${findBlue(t.type)},
                                 0.2
                             )`,
                             borderColor: `rgb(
-                                ${() => findRed(t.type)},
-                                ${() => findGreen(t.type)},
-                                ${() => findBlue(t.type)}
+                                ${findRed(t.type)},
+                                ${findGreen(t.type)},
+                                ${findBlue(t.type)}
                             )`
                         }}
                     >
@@ -118,9 +118,9 @@ const Taggy = ({ text = '', spans = [], ents = []}) => {
                                 verticalAlign: 'middle',
                                 margin: '0px 0px 0.1rem 0.5rem',
                                 background: `rgb(
-                                    ${() => findRed(t.type)},
-                                    ${() => findGreen(t.type)},
-                                    ${() => findBlue(t.type)}
+                                    ${findRed(t.type)},
+                                    ${findGreen(t.type)},
+                                    ${findBlue(t.type)}
                                 )`
                             }}
                         >
@@ -186,15 +186,15 @@ const Taggy = ({ text = '', spans = [], ents = []}) => {
                             borderRadius: '0.25em',
                             border: '1px solid',
                             background: `rgba(
-                                ${() => findRed(t.type)},
-                                ${() => findGreen(t.type)},
-                                ${() => findBlue(t.type)},
+                                ${findRed(t.type)},
+                                ${findGreen(t.type)},
+                                ${findBlue(t.type)},
                                 0.2
                             )`,
                             borderColor: `rgb(
-                                ${() => findRed(t.type)},
-                                ${() => findGreen(t.type)},
-                                ${() => findBlue(t.type)}
+                                ${findRed(t.type)},
+                                ${findGreen(t.type)},
+                                ${findBlue(t.type)}
                             )`
                         }}
                     >
@@ -211,9 +211,9 @@ const Taggy = ({ text = '', spans = [], ents = []}) => {
                                 verticalAlign: 'middle',
                                 margin: '0px 0px 0.1rem 0.5rem',
                                 background: `rgb(
-                                    ${() => findRed(t.type)},
-                                    ${() => findGreen(t.type)},
-                                    ${() => findBlue(t.type)}
+                                    ${findRed(t.type)},
+                                    ${findGreen(t.type)},
+                                    ${findBlue(t.type)}
                                 )`
                             }}
                         >
