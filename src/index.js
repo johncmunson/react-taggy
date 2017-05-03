@@ -3,6 +3,32 @@ import React from 'react'
 // Define functional component. Destructure the props.
 const Taggy = ({ text = '', spans = [], ents = []}) => {
 
+    // Find the correct color of the given entity type. If the given entity is not found, set the color to grey.
+    const findRed = (type) => {
+        for (let e = 0; e < ents.length; e++) {
+            if (ents[e].type === type) {
+                return ents[e].color.r
+            }
+        }
+        return 220
+    }
+    const findGreen = (type) => {
+        for (let e = 0; e < ents.length; e++) {
+            if (ents[e].type === type) {
+                return ents[e].color.g
+            }
+        }
+        return 220
+    }
+    const findBlue = (type) => {
+        for (let e = 0; e < ents.length; e++) {
+            if (ents[e].type === type) {
+                return ents[e].color.b
+            }
+        }
+        return 220
+    }
+
     // Initialize an empty array that will hold the text and entities
     let jsx = []
 
@@ -67,15 +93,15 @@ const Taggy = ({ text = '', spans = [], ents = []}) => {
                             borderRadius: '0.25em',
                             border: '1px solid',
                             background: `rgba(
-                                ${ents.find(ent => ent.type === t.type).color.r},
-                                ${ents.find(ent => ent.type === t.type).color.g},
-                                ${ents.find(ent => ent.type === t.type).color.b},
+                                ${findRed(t.type)},
+                                ${findGreen(t.type)},
+                                ${findBlue(t.type)},
                                 0.2
                             )`,
                             borderColor: `rgb(
-                                ${ents.find(ent => ent.type === t.type).color.r},
-                                ${ents.find(ent => ent.type === t.type).color.g},
-                                ${ents.find(ent => ent.type === t.type).color.b}
+                                ${findRed(t.type)},
+                                ${findGreen(t.type)},
+                                ${findBlue(t.type)}
                             )`
                         }}
                     >
@@ -92,9 +118,9 @@ const Taggy = ({ text = '', spans = [], ents = []}) => {
                                 verticalAlign: 'middle',
                                 margin: '0px 0px 0.1rem 0.5rem',
                                 background: `rgb(
-                                    ${ents.find(ent => ent.type === t.type).color.r},
-                                    ${ents.find(ent => ent.type === t.type).color.g},
-                                    ${ents.find(ent => ent.type === t.type).color.b}
+                                    ${findRed(t.type)},
+                                    ${findGreen(t.type)},
+                                    ${findBlue(t.type)}
                                 )`
                             }}
                         >
@@ -160,15 +186,15 @@ const Taggy = ({ text = '', spans = [], ents = []}) => {
                             borderRadius: '0.25em',
                             border: '1px solid',
                             background: `rgba(
-                                ${ents.find(ent => ent.type === t.type).color.r},
-                                ${ents.find(ent => ent.type === t.type).color.g},
-                                ${ents.find(ent => ent.type === t.type).color.b},
+                                ${findRed(t.type)},
+                                ${findGreen(t.type)},
+                                ${findBlue(t.type)},
                                 0.2
                             )`,
                             borderColor: `rgb(
-                                ${ents.find(ent => ent.type === t.type).color.r},
-                                ${ents.find(ent => ent.type === t.type).color.g},
-                                ${ents.find(ent => ent.type === t.type).color.b}
+                                ${findRed(t.type)},
+                                ${findGreen(t.type)},
+                                ${findBlue(t.type)}
                             )`
                         }}
                     >
@@ -185,9 +211,9 @@ const Taggy = ({ text = '', spans = [], ents = []}) => {
                                 verticalAlign: 'middle',
                                 margin: '0px 0px 0.1rem 0.5rem',
                                 background: `rgb(
-                                    ${ents.find(ent => ent.type === t.type).color.r},
-                                    ${ents.find(ent => ent.type === t.type).color.g},
-                                    ${ents.find(ent => ent.type === t.type).color.b}
+                                    ${findRed(t.type)},
+                                    ${findGreen(t.type)},
+                                    ${findBlue(t.type)}
                                 )`
                             }}
                         >
