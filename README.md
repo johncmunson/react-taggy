@@ -83,5 +83,29 @@ This project is originally a fork of [displacy-ent](https://github.com/explosion
 - ~~The component should not fail if the `ents` and `spans` props are not provided. The `text` should just render like a normal `<p>` tag. Heck, even the `text` prop should be optional, and if it's not provided the component will just render like an empty `<p>` tag would.~~
 - Unit tests, snapshot tests, etc.
 - ~~Set default color to gray if an entity is not found in the `ents` array.~~
+- Similar to the above bullet point, add option to ignore entities not found in the ents array, and just display normal text.
 - Add ability to disable auto-aggregation
-- Create a sister project where the component is just a single tag.
+- Create a sister project where the component is just a single tag... React Taggy Jr.
+- Create a third API that accepts a single array prop that contains both tokens and entities. The example below mixes strings and objects, but an array of strictly objects would make sense as well.
+```javascript
+[
+    'The',
+    'quick',
+    'brown',
+    {
+        token: 'fox',
+        type: 'animal',
+        color: {r: 47, g: 187, b: 171}
+    },
+    'jumped',
+    'over',
+    'the'
+    'lazy',
+    {
+        token: 'dog',
+        type: 'animal',
+        color: {r: 47, g: 187, b: 171}
+    },
+    '.'
+]
+```
