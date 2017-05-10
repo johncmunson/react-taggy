@@ -1,11 +1,30 @@
 {
   "name": "react-taggy",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "A simple zero-dependency React component for tagging user-defined entities within a block of text.",
   "repository": {
     "type": "git",
     "url": "https://github.com/johncmunson/react-taggy.git"
   },
+  "bugs": {
+    "url": "https://github.com/johncmunson/react-taggy/issues"
+  },
+  "keywords": [
+    "react",
+    "ner",
+    "nlp",
+    "entity",
+    "entities",
+    "react-component",
+    "component",
+    "natural",
+    "language",
+    "natural-language",
+    "named-entity-recognition",
+    "recognition",
+    "tag",
+    "keyword"
+  ],
   "license": "BSD",
   "scripts": {
     "prepublish": ". ./.scripts/prepublish.sh",
