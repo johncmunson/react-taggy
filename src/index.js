@@ -96,7 +96,7 @@ const Taggy = ({ text = '', spans = [], ents = []}) => {
                                 ${findRed(t.type)},
                                 ${findGreen(t.type)},
                                 ${findBlue(t.type)},
-                                0.2
+                                1
                             )`,
                             borderColor: `rgb(
                                 ${findRed(t.type)},
@@ -189,7 +189,7 @@ const Taggy = ({ text = '', spans = [], ents = []}) => {
                                 ${findRed(t.type)},
                                 ${findGreen(t.type)},
                                 ${findBlue(t.type)},
-                                0.2
+                                1
                             )`,
                             borderColor: `rgb(
                                 ${findRed(t.type)},
