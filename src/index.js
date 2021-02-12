@@ -29,6 +29,15 @@ const Taggy = ({ text = '', spans = [], ents = []}) => {
         return 220
     }
 
+    const findAlphaOpacity = (type) => {
+        for (let e = 0; e < ents.length; e++) {
+            if (ents[e].type === type) {
+                return ents[e].color.a
+            }
+        }
+        return 0.2
+    }
+
     // Initialize an empty array that will hold the text and entities
     let jsx = []
 
@@ -96,7 +105,7 @@ const Taggy = ({ text = '', spans = [], ents = []}) => {
                                 ${findRed(t.type)},
                                 ${findGreen(t.type)},
                                 ${findBlue(t.type)},
-                                1
+                                ${findAlphaOpacity(t.type)},
                             )`,
                             borderColor: `rgb(
                                 ${findRed(t.type)},
@@ -189,7 +198,7 @@ const Taggy = ({ text = '', spans = [], ents = []}) => {
                                 ${findRed(t.type)},
                                 ${findGreen(t.type)},
                                 ${findBlue(t.type)},
-                                1
+                                ${findAlphaOpacity(t.type)},
                             )`,
                             borderColor: `rgb(
                                 ${findRed(t.type)},
