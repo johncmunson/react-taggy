@@ -105,7 +105,7 @@ const Taggy = ({ text = '', spans = [], ents = []}) => {
                                 ${findRed(t.type)},
                                 ${findGreen(t.type)},
                                 ${findBlue(t.type)},
-                                ${findAlphaOpacity(t.type)},
+                                ${findAlphaOpacity(t.type)}
                             )`,
                             borderColor: `rgb(
                                 ${findRed(t.type)},
@@ -198,7 +198,7 @@ const Taggy = ({ text = '', spans = [], ents = []}) => {
                                 ${findRed(t.type)},
                                 ${findGreen(t.type)},
                                 ${findBlue(t.type)},
-                                ${findAlphaOpacity(t.type)},
+                                ${findAlphaOpacity(t.type)}
                             )`,
                             borderColor: `rgb(
                                 ${findRed(t.type)},
