@@ -175,7 +175,7 @@ const Taggy = ({ text = '', spans = [], ents = [], onClick = (event, tag, elemIn
         })
         let tagIndex = 0;
         // Loop through our 'tokens' array. Push strings directly to the 'jsx' array. Convert entity objects to jsx markup, then push to the 'jsx' array.
-        tokensWithSpaces.forEach(t => {
+        tokensWithSpaces.forEach((t, i) => {
             if (typeof t === 'string') {
                 jsx.push(t)
             }
