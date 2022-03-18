@@ -1,7 +1,7 @@
 import React from 'react'
 
 // Define functional component. Destructure the props.
-const Taggy = ({ text = '', spans = [], ents = [], onClick = (event, tag, elemIndex, tagIndex) => {}}) => {
+const Taggy = ({ text = '', spans = [], ents = [], onClick = (event, tag, elemIndex) => {}}) => {
 
     // Find the correct color of the given entity type. If the given entity is not found, set the color to grey.
     const findRed = (type) => {
@@ -77,16 +77,15 @@ const Taggy = ({ text = '', spans = [], ents = [], onClick = (event, tag, elemIn
         }
         // Filter out the consecutive entities that were marked as duplicates
         elements = elements.filter(val => !!val)
-        let tagIndex = 0;
         // Loop through our 'elements' array. Push strings directly to the 'jsx' array. Convert entity objects to jsx markup, then push to the 'jsx' array.
-        elements.forEach(t => {
+        elements.forEach((t, i) => {
             if (typeof t === 'string') {
                 jsx.push(t)
             }
             else {
                 jsx.push(
                     <mark
-                        onClick={(e) => onClick(e, t, i, tagIndex)}
+                        onClick={(e) => onClick(e, t, i)}
                         style={{
                             padding: '0.25em 0.35em',
                             margin: '0px 0.25em',
@@ -130,7 +129,6 @@ const Taggy = ({ text = '', spans = [], ents = [], onClick = (event, tag, elemIn
                         </span>
                     </mark>
                 )
-                tagIndex++
             }
         })
     }
@@ -173,7 +171,6 @@ const Taggy = ({ text = '', spans = [], ents = [], onClick = (event, tag, elemIn
             }
             return t
         })
-        let tagIndex = 0;
         // Loop through our 'tokens' array. Push strings directly to the 'jsx' array. Convert entity objects to jsx markup, then push to the 'jsx' array.
         tokensWithSpaces.forEach((t, i) => {
             if (typeof t === 'string') {
@@ -182,7 +179,7 @@ const Taggy = ({ text = '', spans = [], ents = [], onClick = (event, tag, elemIn
             else {
                 jsx.push(
                     <mark
-                        onClick={(e) => onClick(e, t, i, tagIndex)}
+                        onClick={(e) => onClick(e, t, i)}
                         style={{
                             padding: '0.25em 0.35em',
                             margin: '0px 0.25em',
@@ -226,7 +223,6 @@ const Taggy = ({ text = '', spans = [], ents = [], onClick = (event, tag, elemIn
                         </span>
                     </mark>
                 )
-                tagIndex++
             }
         })
     }
