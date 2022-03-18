@@ -1,7 +1,7 @@
 import React from 'react'
 
 // Define functional component. Destructure the props.
-const Taggy = ({ text = '', spans = [], ents = []}) => {
+const Taggy = ({ text = '', spans = [], ents = [], onClick = (event, tag, index) => {}}) => {
 
     // Find the correct color of the given entity type. If the given entity is not found, set the color to grey.
     const findRed = (type) => {
@@ -85,6 +85,7 @@ const Taggy = ({ text = '', spans = [], ents = []}) => {
             else {
                 jsx.push(
                     <mark
+                        onClick={(e) => onClick(e, t, i)}
                         style={{
                             padding: '0.25em 0.35em',
                             margin: '0px 0.25em',
@@ -178,6 +179,7 @@ const Taggy = ({ text = '', spans = [], ents = []}) => {
             else {
                 jsx.push(
                     <mark
+                        onClick={(e) => onClick(e, t, i)}
                         style={{
                             padding: '0.25em 0.35em',
                             margin: '0px 0.25em',
