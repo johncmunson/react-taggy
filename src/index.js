@@ -1,7 +1,10 @@
 import React from 'react'
 
 // Define functional component. Destructure the props.
-const Taggy = ({ text = '', spans = [], ents = [], onClick = (event, tag, elemIndex) => {}}) => {
+const Taggy = ({ text = '', spans = [], ents = [], 
+        onClick = (event, tag, elemIndex) => {}, 
+        onHighlight = (event, text, spanIndex, start, end) => {}
+}) => {
 
     // Find the correct color of the given entity type. If the given entity is not found, set the color to grey.
     const findRed = (type) => {
@@ -29,6 +32,15 @@ const Taggy = ({ text = '', spans = [], ents = [], onClick = (event, tag, elemIn
         return 220
     }
 
+    const highlightCallback = (e, spanText, i) => {
+        // Start and end are relative to the current element, not the whole text
+        const start = window.getSelection().anchorOffset
+        const end = window.getSelection().focusOffset
+        const text = spanText.substring(start, end)
+        onHighlight(e, text, i, start, end)
+    }
+
+
     // Initialize an empty array that will hold the text and entities
     let jsx = []
 
@@ -38,20 +50,20 @@ const Taggy = ({ text = '', spans = [], ents = [], onClick = (event, tag, elemIn
         let elements = []
         // Keep track of location in the string of text
         let offset = 0
+        // Make sure spans are ordered by they start index
+        spans.sort((a,b) => (a.start > b.start) ? 1 : ((b.start > a.start) ? -1 : 0))
         // Loop through the spans, using the span data to construct the 'elements' array
-        spans.forEach(({ type, start, end }) => {
+        spans.forEach((span) => {
             // Create a string of text that does not contain any entities
-            const fragment = text.slice(offset, start)
+            const fragment = text.slice(offset, span.start)
             // Create an entity
-            const entity = text.slice(start, end)
+            const entity = text.slice(span.start, span.end)
             // Push the both of them to the elements array
             elements.push(fragment)
-            elements.push({
-                token: entity,
-                type: type.toLowerCase()
-            })
+            span.token = entity
+            elements.push(span)
             // Update our position within the string of text
-            offset = end
+            offset = span.end
         })
         // After pushing all of the entities to the 'elements' array, push the remaining text to the 'elements' array. Elements should now consist of strings and objects/entities.
         elements.push(text.slice(offset, text.length))
@@ -80,7 +92,10 @@ const Taggy = ({ text = '', spans = [], ents = [], onClick = (event, tag, elemIn
         // Loop through our 'elements' array. Push strings directly to the 'jsx' array. Convert entity objects to jsx markup, then push to the 'jsx' array.
         elements.forEach((t, i) => {
             if (typeof t === 'string') {
-                jsx.push(t)
+                jsx.push(<span 
+                    onMouseUp={(e) => {highlightCallback(e, t, i)}} 
+                    onDoubleClick={(e) => {highlightCallback(e, t, i)}} 
+                >{t}</span>)
             }
             else {
                 jsx.push(
@@ -114,7 +129,6 @@ const Taggy = ({ text = '', spans = [], ents = [], onClick = (event, tag, elemIn
                                 lineHeight: '1',
                                 padding: '0.35em',
                                 borderRadius: '0.35em',
-                                textTransform: 'uppercase',
                                 display: 'inline-block',
                                 verticalAlign: 'middle',
                                 margin: '0px 0px 0.1rem 0.5rem',
@@ -141,7 +155,7 @@ const Taggy = ({ text = '', spans = [], ents = [], onClick = (event, tag, elemIn
         for (let s = 0; s < spans.length; s++) {
             tokens[spans[s].index] = {
                 token: tokens[spans[s].index],
-                type: spans[s].type.toLowerCase()
+                type: spans[s].type
             }
         }
         // Loop through the tokens array, looking for multi-word entities
@@ -174,7 +188,10 @@ const Taggy = ({ text = '', spans = [], ents = [], onClick = (event, tag, elemIn
         // Loop through our 'tokens' array. Push strings directly to the 'jsx' array. Convert entity objects to jsx markup, then push to the 'jsx' array.
         tokensWithSpaces.forEach((t, i) => {
             if (typeof t === 'string') {
-                jsx.push(t)
+                jsx.push(<span 
+                    onMouseUp={(e) => {highlightCallback(e, t, i)}} 
+                    onDoubleClick={(e) => {highlightCallback(e, t, i)}} 
+                >{t}</span>)
             }
             else {
                 jsx.push(
@@ -208,7 +225,6 @@ const Taggy = ({ text = '', spans = [], ents = [], onClick = (event, tag, elemIn
                                 lineHeight: '1',
                                 padding: '0.35em',
                                 borderRadius: '0.35em',
-                                textTransform: 'uppercase',
                                 display: 'inline-block',
                                 verticalAlign: 'middle',
                                 margin: '0px 0px 0.1rem 0.5rem',
@@ -229,7 +245,7 @@ const Taggy = ({ text = '', spans = [], ents = [], onClick = (event, tag, elemIn
 
     // Return the markup
     return (
-        <div>
+        <div style={{display: 'inline-block'}}>
             {jsx.map((j, i) => (
                 <span key={i}>{j}</span>
             ))}
