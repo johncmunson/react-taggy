@@ -44,14 +44,15 @@ const Taggy = ({ text = '', spans = [], ents = [],
     // Initialize an empty array that will hold the text and entities
     let jsx = []
 
+    // Make sure spans are ordered by they start index
+    spans.sort((a,b) => (a.start > b.start) ? 1 : ((b.start > a.start) ? -1 : 0))
+
     // METHOD 1 - STRING
     if (typeof text === 'string') {
         // Initialize an empty array. The contents of 'elements' will eventually get pushed to the 'jsx' array, and will be converted to jsx markup in the process.
         let elements = []
         // Keep track of location in the string of text
         let offset = 0
-        // Make sure spans are ordered by they start index
-        spans.sort((a,b) => (a.start > b.start) ? 1 : ((b.start > a.start) ? -1 : 0))
         // Loop through the spans, using the span data to construct the 'elements' array
         spans.forEach((span) => {
             // Create a string of text that does not contain any entities
@@ -153,11 +154,11 @@ const Taggy = ({ text = '', spans = [], ents = [],
         let tokens = text
         // Loop through the 'spans' array. Use the span data to update our 'tokens' array with entities
         for (let s = 0; s < spans.length; s++) {
-            tokens[spans[s].index] = {
-                token: tokens[spans[s].index],
-                type: spans[s].type
-            }
+            tokens[spans[s].index] = spans[s] 
+            tokens[spans[s].index].token = tokens[spans[s].index]
+            tokens[spans[s].index].type = spans[s].type
         }
+        
         // Loop through the tokens array, looking for multi-word entities
         for (let t = 0; t < tokens.length; t++) {
             // Check if we've stopped at an entity
