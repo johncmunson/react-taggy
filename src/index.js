@@ -1,9 +1,10 @@
 import React from 'react'
 
 // Define functional component. Destructure the props.
-const Taggy = ({ text = '', spans = [], ents = [], 
-        onClick = (event, tag, elemIndex) => {}, 
-        onHighlight = (event, text, spanIndex, start, end) => {}
+const Taggy = ({ text = '', spans = [], ents = [],
+        onClick = (event, tag, elemIndex) => {},
+        onMouseOver = (event, tag, elemIndex) => {},
+        onHighlight = (event, text, spanIndex, start, end) => {},
 }) => {
 
     // Find the correct color of the given entity type. If the given entity is not found, set the color to grey.
@@ -93,15 +94,16 @@ const Taggy = ({ text = '', spans = [], ents = [],
         // Loop through our 'elements' array. Push strings directly to the 'jsx' array. Convert entity objects to jsx markup, then push to the 'jsx' array.
         elements.forEach((t, i) => {
             if (typeof t === 'string') {
-                jsx.push(<span 
-                    onMouseUp={(e) => {highlightCallback(e, t, i)}} 
-                    onDoubleClick={(e) => {highlightCallback(e, t, i)}} 
+                jsx.push(<span
+                    onMouseUp={(e) => {highlightCallback(e, t, i)}}
+                    onDoubleClick={(e) => {highlightCallback(e, t, i)}}
                 >{t}</span>)
             }
             else {
                 jsx.push(
                     <mark
                         onClick={(e) => onClick(e, t, i)}
+                        onMouseOver={(e) => onMouseOver(e, t, i)}
                         style={{
                             padding: '0.25em 0.35em',
                             margin: '0px 0.25em',
@@ -154,11 +156,11 @@ const Taggy = ({ text = '', spans = [], ents = [],
         let tokens = text
         // Loop through the 'spans' array. Use the span data to update our 'tokens' array with entities
         for (let s = 0; s < spans.length; s++) {
-            tokens[spans[s].index] = spans[s] 
+            tokens[spans[s].index] = spans[s]
             tokens[spans[s].index].token = tokens[spans[s].index]
             tokens[spans[s].index].type = spans[s].type
         }
-        
+
         // Loop through the tokens array, looking for multi-word entities
         for (let t = 0; t < tokens.length; t++) {
             // Check if we've stopped at an entity
@@ -189,15 +191,16 @@ const Taggy = ({ text = '', spans = [], ents = [],
         // Loop through our 'tokens' array. Push strings directly to the 'jsx' array. Convert entity objects to jsx markup, then push to the 'jsx' array.
         tokensWithSpaces.forEach((t, i) => {
             if (typeof t === 'string') {
-                jsx.push(<span 
-                    onMouseUp={(e) => {highlightCallback(e, t, i)}} 
-                    onDoubleClick={(e) => {highlightCallback(e, t, i)}} 
+                jsx.push(<span
+                    onMouseUp={(e) => {highlightCallback(e, t, i)}}
+                    onDoubleClick={(e) => {highlightCallback(e, t, i)}}
                 >{t}</span>)
             }
             else {
                 jsx.push(
                     <mark
                         onClick={(e) => onClick(e, t, i)}
+                        onMouseOver={(e) => onMouseOver(e, t, i)}
                         style={{
                             padding: '0.25em 0.35em',
                             margin: '0px 0.25em',
