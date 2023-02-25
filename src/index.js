@@ -1,10 +1,13 @@
 import React from 'react'
 
 // Define functional component. Destructure the props.
-const Taggy = ({ text = '', spans = [], ents = [],
-        onClick = (event, tag, elemIndex) => {},
-        onMouseOver = (event, tag, elemIndex) => {},
-        onHighlight = (event, text, spanIndex, start, end) => {},
+const Taggy = ({
+    text = '',
+    spans = [],
+    ents = [],
+    onClick = (event, tag, elemIndex) => {},
+    onMouseOver = (event, tag, elemIndex) => {},
+    onHighlight = (event, text, spanIndex, start, end) => {},
 }) => {
 
     // Find the correct color of the given entity type. If the given entity is not found, set the color to grey.

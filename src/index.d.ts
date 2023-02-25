@@ -1,0 +1,1 @@
+export declare module "react-taggy"
